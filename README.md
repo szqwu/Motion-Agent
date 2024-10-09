@@ -12,4 +12,4 @@ While previous approaches to 3D human motion generation have achieved notable su
 ## Updates
 
 - [2024/10/08] Motion-Agent paper is available.
-- [2024/05/28] MotionLLM paper is available.
+- [2024/05/28] Original version MotionLLM paper is available.
