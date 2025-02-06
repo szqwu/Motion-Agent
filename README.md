@@ -11,5 +11,20 @@ While previous approaches to 3D human motion generation have achieved notable su
 
 ## Updates
 
+- [2025/02/06] Motion-Agent is accepted to ICLR 2025.
 - [2024/10/08] Motion-Agent paper is available.
 - [2024/05/28] Original version MotionLLM paper is available.
+
+## Citation
+If you find our work useful, please cite us. The BibTeX is as follows.
+```
+@inproceedings{
+wu2025motionagent,
+title={Motion-Agent: A Conversational Framework for Human Motion Generation with {LLM}s},
+author={Qi Wu and Yubo Zhao and Yifan Wang and Xinhang Liu and Yu-Wing Tai and Chi-Keung Tang},
+booktitle={The Thirteenth International Conference on Learning Representations},
+year={2025},
+url={https://openreview.net/forum?id=AvOhBgsE5R}
+}
+
+
