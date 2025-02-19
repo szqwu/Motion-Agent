@@ -49,6 +49,9 @@ bash prepare/download_glove.sh
 bash prepare/download_extractor.sh
 ```
 
+### Prepare the LLM backbone
+We use Google Gemma2-2B as MotionLLM's backbone. Please grant access from [huggingface](https://huggingface.co/google/gemma-2-2b) and use `huggingface-cli login` to login.
+
 ## Demo
 We provide an interactive demo for Motion-Agent that runs in your terminal. You will need to setup your own Azure OpenAI API key and endpoint.
 To start the demo:
