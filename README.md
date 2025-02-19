@@ -1,4 +1,4 @@
-# Motion-Agent: A Conversational Framework for Human Motion Generation with LLMs
+# Motion-Agent: A Conversational Framework for Human Motion Generation with LLMs (ICLR 2025) 
 
 <p align="center">
     <a href="https://arxiv.org/abs/2405.17013"><img alt='arXiv' src="https://img.shields.io/badge/arXiv-2405.17013-b31b1b.svg"></a>
@@ -11,6 +11,7 @@ While previous approaches to 3D human motion generation have achieved notable su
 
 ## Updates
 
+- [2025/02/19] Demo and evaluation code are available.
 - [2025/02/06] Motion-Agent is accepted to ICLR 2025.
 - [2024/10/08] Motion-Agent paper is available.
 - [2024/05/28] Original version MotionLLM paper is available.
@@ -26,3 +27,67 @@ booktitle={The Thirteenth International Conference on Learning Representations},
 year={2025},
 url={https://openreview.net/forum?id=AvOhBgsE5R}
 }
+```
+
+## Getting Started
+
+### Environment Setup
+```bash
+conda create -n motionagent python=3.10
+conda activate motionagent
+pip install -r requirements.txt
+```
+### Download Motion-Agent ckpts
+Download Motion-Agent ckpts.
+```bash
+bash prepare/download_ckpt.sh
+```
+### Download Glove and extractor
+Download evaluation models and gloves for evaluation.
+```bash
+bash prepare/download_glove.sh
+bash prepare/download_extractor.sh
+```
+
+## Demo
+We provide an interactive demo for Motion-Agent that runs in your terminal. You will need to setup your own Azure OpenAI API key and endpoint.
+To start the demo:
+
+```bash
+python demo.py
+```
+
+### Example Prompts
+Here are some examples of what you can ask Motion-Agent:
+
+1. **Motion Generation**
+```bash
+Generate a motion of a person runs forward and then does a backflip.
+```
+
+2. **Motion Reasoning**
+```bash
+Why is the person doing this? ./assets/motion_example.npy
+```
+<details>
+<summary>Preview of the example motion</summary>
+
+![motion_example](./assets/motion_example.gif)
+</details>
+
+Note: For motion reasoning, make sure your motion file is in the correct `.npy` format (HumanML3D format) and exists in the specified path.
+
+## Evaluation
+To get the full data of HumanML3D, please follow the instruction in [HumanML3D](https://github.com/EricGuo5513/HumanML3D).
+```bash
+python eval_mllm.py
+```
+
+
+## Acknowledgements
+We would like to thank the following open-source projects for their contributions to our codes:
+[T2M-GPT](https://github.com/Mael-zys/T2M-GPT),
+[NExT-GPT](https://github.com/NExT-GPT/NExT-GPT),
+[text-to-motion](https://github.com/EricGuo5513/text-to-motion).
+
+
