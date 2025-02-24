@@ -19,13 +19,11 @@ While previous approaches to 3D human motion generation have achieved notable su
 ## Citation
 If you find our work useful, please cite us. The BibTeX is as follows.
 ```
-@inproceedings{
-wu2025motionagent,
-title={Motion-Agent: A Conversational Framework for Human Motion Generation with {LLM}s},
-author={Qi Wu and Yubo Zhao and Yifan Wang and Xinhang Liu and Yu-Wing Tai and Chi-Keung Tang},
-booktitle={The Thirteenth International Conference on Learning Representations},
-year={2025},
-url={https://openreview.net/forum?id=AvOhBgsE5R}
+@article{wu2024motion,
+  title={Motion-Agent: A Conversational Framework for Human Motion Generation with LLMs},
+  author={Wu, Qi and Zhao, Yubo and Wang, Yifan and Liu, Xinhang and Tai, Yu-Wing and Tang, Chi-Keung},
+  journal={arXiv preprint arXiv:2405.17013},
+  year={2024}
 }
 ```
 
