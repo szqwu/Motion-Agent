@@ -163,5 +163,6 @@ glove
 pretrained
 checkpoints
 ckpt
+experiments
 *.out
 *.pth

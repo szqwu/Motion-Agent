@@ -10,7 +10,7 @@
 While previous approaches to 3D human motion generation have achieved notable success, they often rely on extensive training and are limited to specific tasks. To address these challenges, we introduce **Motion-Agent**, an efficient conversational framework designed for general human motion generation, editing, and understanding. Motion-Agent employs an open-source pre-trained language model to develop a generative agent, **MotionLLM**, that bridges the gap between motion and text. This is accomplished by encoding and quantizing motions into discrete tokens that align with the language model's vocabulary. With only 1-3\% of the model's parameters fine-tuned using adapters, MotionLLM delivers performance on par with diffusion models and other transformer-based methods trained from scratch. By integrating MotionLLM with GPT-4 without additional training, Motion-Agent is able to generate highly complex motion sequences through multi-turn conversations, a capability that previous models have struggled to achieve. Motion-Agent supports a wide range of motion-language tasks, offering versatile capabilities for generating and customizing human motion through interactive conversational exchanges.
 
 ## Updates
-
+- [2025/05/15] The training script is released.
 - [2025/02/19] Demo and evaluation code are available.
 - [2025/02/06] Motion-Agent is accepted to ICLR 2025.
 - [2024/10/08] Motion-Agent paper is available.
@@ -82,6 +82,17 @@ Note: For motion reasoning, make sure your motion file is in the correct `.npy` 
 To get the full data of HumanML3D, please follow the instruction in [HumanML3D](https://github.com/EricGuo5513/HumanML3D).
 ```bash
 python eval_mllm.py
+```
+
+## Training
+To train your own tokenier, you can refer to [T2M-GPT](https://github.com/Mael-zys/T2M-GPT).
+
+Motion generation and motion captioning are trained separately. You can train MotionLLM by running the following commands.
+```bash
+python train_mllm.py --training_task t2m
+```
+```bash
+python train_mllm.py --training_task m2t
 ```
 
 

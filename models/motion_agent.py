@@ -26,8 +26,8 @@ class MotionAgent:
         self.motion_history = {}
 
         print("Loading example prompt from example_prompt.txt, feel free to use your own prompt")
-        prompt = open("example_prompt.txt", "r").read() # loading the example prompt, feel free to use your own prompt
-        self.context.append({"role": "system", "content": prompt})
+        self.prompt = open("example_prompt.txt", "r").read() # loading the example prompt, feel free to use your own prompt
+        self.context.append({"role": "system", "content": self.prompt})
 
     def process_motion_dialogue(self, message):
         # if the message contains 'npy', it means the user wants to reason on a motion
@@ -112,7 +112,8 @@ class MotionAgent:
     def clean(self):
         self.context = []
         self.motion_history = {}
-        print("Cleaned up the context and motion history")
+        self.context.append({"role": "system", "content": self.prompt})
+        print("Cleaned up the context and motion history.")
 
     def chat(self):
         print("Welcome to Motion-Agent! Type 'exit' to quit.")

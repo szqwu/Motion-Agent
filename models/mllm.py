@@ -17,6 +17,7 @@ class MotionLLM(nn.Module):
         self.mean = np.load('checkpoints/t2m/VQVAEV3_CB1024_CMT_H1024_NRES3/meta/mean.npy')
         self.std = np.load('checkpoints/t2m/VQVAEV3_CB1024_CMT_H1024_NRES3/meta/std.npy')
         self.device = args.device
+        self.training_task = None # t2m or m2t for training
 
         self.lora_config_t2m = LoraConfig(
             r=self.args.lora_r_t2m,
@@ -69,11 +70,16 @@ class MotionLLM(nn.Module):
         # print(self.llm)
     
     def forward(self, caption, motion):
+        if self.training_task == 't2m':
+            self.llm.set_adapter('t2m')
+        elif self.training_task == 'm2t':
+            self.llm.set_adapter('m2t')
 
         inputs_ids, targets, attention_mask = process_batch(tokenizer=self.tokenizer, 
-                                                            caption=caption, 
+                                                            batch_of_captions=caption, 
                                                             max_tgt_len=200, 
-                                                            batch_of_motions=motion)
+                                                            batch_of_motions=motion,
+                                                            training_task=self.training_task)
         
         # print(inputs_ids.shape)
         # print(targets.shape)
