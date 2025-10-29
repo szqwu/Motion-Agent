@@ -16,7 +16,7 @@ def eval_t2m():
     model = MotionLLM(args)
     model.load_model('ckpt/motionllm.pth')
 
-    w_vectorizer = WordVectorizer('../LLM-MotionGen/glove', 'our_vab')
+    w_vectorizer = WordVectorizer('glove', 'our_vab')
     args.dataname = 't2m'
     dataset_opt_path = 'checkpoints/t2m/Comp_v6_KLD005/opt.txt'
     wrapper_opt = get_opt(dataset_opt_path, args.device)

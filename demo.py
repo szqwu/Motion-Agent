@@ -29,6 +29,7 @@ def motionllm_demo():
     
     caption = 'A man is doing cartwheels.'
     motion = model.generate(caption)
+    motion = model.net.forward_decoder(motion)
 
     motion = model.denormalize(motion.detach().cpu().numpy())
     motion = recover_from_ric(torch.from_numpy(motion).float().cuda(), 22)
