@@ -147,7 +147,6 @@ class MotionLLM(nn.Module):
     def generate_one_motion(self, input):
         self.llm.set_adapter('t2m')
         self.llm.eval()
-        motion_token_embeddings = self.llm.model.model.embed_tokens(torch.tensor(self.motion_token_indices).cuda())
 
         prompt = "Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.\n\n"
         instruction = "### Instruction:\nGenerate a motion matching the following input human motion description\n\n"
