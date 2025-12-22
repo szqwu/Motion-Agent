@@ -47,7 +47,8 @@ def evaluation_test(out_dir, val_loader, model, eval_wrapper, draw = False, save
             for k in range(bs):
                 try:
                 #     # print(caption[k])
-                    index_motion = model.generate(caption[k])
+                    # index_motion = model.generate(caption[k])
+                    index_motion = model.generate_one_motion(caption[k])
                     pred_pose = model.net.forward_decoder(index_motion)
                 except:
                     index_motion = torch.ones(1,1).to(device).long()

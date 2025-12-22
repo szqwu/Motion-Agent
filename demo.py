@@ -28,7 +28,8 @@ def motionllm_demo():
     model.llm.cuda()
     
     caption = 'A man is doing cartwheels.'
-    motion = model.generate(caption)
+    # motion = model.generate(caption)
+    motion = model.generate_one_motion(caption)
     motion = model.net.forward_decoder(motion)
 
     motion = model.denormalize(motion.detach().cpu().numpy())

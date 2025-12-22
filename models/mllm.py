@@ -141,6 +141,32 @@ class MotionLLM(nn.Module):
         
         # print(motion_tokens)
         return motion_tokens
+
+    # previously used method to generate one motion token sequence
+    # bugs (beam search) appear in self.generate() function, refer to https://github.com/szqwu/Motion-Agent/issues/10
+    def generate_one_motion(self, input):
+        self.llm.set_adapter('t2m')
+        self.llm.eval()
+        motion_token_embeddings = self.llm.model.model.embed_tokens(torch.tensor(self.motion_token_indices).cuda())
+
+        prompt = "Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.\n\n"
+        instruction = "### Instruction:\nGenerate a motion matching the following input human motion description\n\n"
+        input_text = '### Input:\n' + input + '\n\nResponse: <Motion>'
+        input = prompt + instruction + input_text
+        # print(input)
+        input_ids = self.tokenizer.encode(input, return_tensors="pt").cuda()
+        # print(input_ids)
+        # input_ids = tokenizer(input, return_tensors="pt").input_ids.cuda()
+        motion = self.llm.generate(input_ids, max_length=200, num_beams=5, early_stopping=True)
+        # motion = gemma_model.generate(input_ids, max_length=200, num_beams=5, early_stopping=False)
+        # print(input_ids.shape)
+        motion = motion[0, len(input_ids[0]):]
+        # print(self.tokenizer.decode(motion))
+        eom = self.tokenizer.encode('</Motion>', return_tensors="pt", add_special_tokens=False).item()
+        if eom in motion.tolist():
+            motion = motion[:motion.tolist().index(eom)]
+
+        return torch.clamp(motion - (len(self.tokenizer) - self.args.nb_code), min=0)
     
     def caption(self, motion):
         self.llm.set_adapter('m2t')
