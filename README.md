@@ -25,6 +25,11 @@ If you find our work useful, please cite us. The BibTeX is as follows.
   journal={arXiv preprint arXiv:2405.17013},
   year={2024}
 }
+@inproceedings{wumotion,
+  title={Motion-Agent: A Conversational Framework for Human Motion Generation with LLMs},
+  author={Wu, Qi and Zhao, Yubo and Wang, Yifan and Liu, Xinhang and Tai, Yu-Wing and Tang, Chi-Keung},
+  booktitle={The Thirteenth International Conference on Learning Representations}
+}
 ```
 
 ## Getting Started
